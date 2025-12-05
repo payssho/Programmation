@@ -68,14 +68,29 @@ from random import randint
 #Quizz magique
 def quizzMagique():
     input2 = int(input("Entrez un nombre de questions a poser : "))
+    bonnesReponses = 0
     for i in range(1, input2 + 1):
         random1 = randint(1, 100)
         random2 = randint(1, 100)
         print("Question", i, ":", random1, "+", random2, "=")
         input3 = int(input("Entrez la réponse : "))
         if input3 == random1 + random2:
-            print("coorect !")
+            print("Correct !")
+            bonnesReponses += 1
         else:
-            print("faux la bonne réponse est", random1 + random2)
+            print("Faux, la bonne réponse est", random1 + random2)
+    
+    # Résultats finaux
+    pourcentage = (bonnesReponses / input2) * 100
+    print("\n--- Résultats ---")
+    print("Bonnes réponses :", bonnesReponses, "/", input2)
+    print("Pourcentage de réussite :", pourcentage, "%")
+    
+    if pourcentage >= 80:
+        print("Excellent ! Bravo !")
+    elif pourcentage >= 50:
+        print("Pas mal, tu peux faire mieux !")
+    else:
+        print("Il faut réviser...")
 
 quizzMagique()
