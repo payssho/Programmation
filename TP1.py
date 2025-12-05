@@ -63,13 +63,13 @@ def demander_proposition(mini, maxi):
 
 def analyser_proposition(proposition, secret):
     if proposition < secret:
-        print("Trop petit !")
+        print("Trop petit")
         return -1
     elif proposition > secret:
-        print("Trop grand !")
+        print("Trop grasn")
         return 1
     else:
-        print("Bravo !")
+        print("C'est juste")
         return 0
 
 
