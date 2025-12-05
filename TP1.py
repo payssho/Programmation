@@ -66,7 +66,7 @@ def analyser_proposition(proposition, secret):
         print("Trop petit")
         return -1
     elif proposition > secret:
-        print("Trop grasn")
+        print("Trop grand")
         return 1
     else:
         print("C'est juste")
@@ -97,8 +97,10 @@ def demander_rejouer():
     while True:
         try:
             reponse = input("rejeouer ? (o ou n pour repondre) : ")
-            if reponse.lower() == "o" or reponse.lower() == "n":
+            if reponse.lower() == "o" :
                 return True
+            elif reponse.lower() == "n":
+                return False
             else:
                 print("Repondre par 'o' ou 'n'.")
         except ValueError:
