@@ -65,32 +65,46 @@ def calcDiviseurs():
 calcDiviseurs()
 
 from random import randint
-
-# Quizz magique
+#Quizz magique
 def quizzMagique():
-    nbQuestions = int(input("Combien de questions ? "))
-    score = 0
-    
-    for i in range(nbQuestions):
-        a = randint(1, 100)
-        b = randint(1, 100)
-        reponse = int(input(str(a) + " + " + str(b) + " = "))
-        
-        if reponse == a + b:
+    while True:
+        try:
+            input2 = int(input("Entrez un nombre de questions a poser : "))
+            if input2 > 0:
+                break  # Sort de la boucle si c'est un nombre valide > 0
+            else:
+                print("Erreur : entrez un nombre supérieur à 0 !")
+        except ValueError:
+            print("Erreur : entrez un nombre entier !")
+    bonnesReponses = 0
+    for i in range(1, input2 + 1):
+        random1 = randint(1, 100)
+        random2 = randint(1, 100)
+        print("Question", i, ":", random1, "+", random2, "=")
+        while True:
+            try:
+                input3 = int(input("Entrez la réponse : "))
+                break
+            except ValueError:
+                print("Erreur : entrez un nombre entier !")
+        if input3 == random1 + random2:
             print("Correct !")
-            score += 1
+            bonnesReponses += 1
         else:
-            print("Faux, c'était", a + b)
+            print("Faux, la bonne réponse est", random1 + random2)
     
-    pourcentage = (score / nbQuestions) * 100
-    print("\nScore :", score, "/", nbQuestions, "(", pourcentage, "%)")
-    
+    # Résultats finaux
+    pourcentage = (bonnesReponses / input2) * 100
+    print("\n--- Résultats ---")
+    print("Bonnes réponses :", bonnesReponses, "/", input2)
+    print("Pourcentage de réussite :", pourcentage, "%")
+
     if pourcentage >= 80:
-        print("Excellent !")
+        print("Excellent ! Bravo !")
     elif pourcentage >= 50:
-        print("Pas mal !")
+        print("Pas mal, tu peux faire mieux !")
     else:
-        print("À réviser...")
+        print("Il faut réviser...")
     
     return pourcentage
 
@@ -116,3 +130,5 @@ while True:
     elif choix == "3":
         print("Au revoir !")
         break
+    else:
+        print("Choix invalide")
