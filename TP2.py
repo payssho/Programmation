@@ -65,32 +65,54 @@ def calcDiviseurs():
 calcDiviseurs()
 
 from random import randint
-#Quizz magique
+
+# Quizz magique
 def quizzMagique():
-    input2 = int(input("Entrez un nombre de questions a poser : "))
-    bonnesReponses = 0
-    for i in range(1, input2 + 1):
-        random1 = randint(1, 100)
-        random2 = randint(1, 100)
-        print("Question", i, ":", random1, "+", random2, "=")
-        input3 = int(input("Entrez la réponse : "))
-        if input3 == random1 + random2:
-            print("Correct !")
-            bonnesReponses += 1
-        else:
-            print("Faux, la bonne réponse est", random1 + random2)
+    nbQuestions = int(input("Combien de questions ? "))
+    score = 0
     
-    # Résultats finaux
-    pourcentage = (bonnesReponses / input2) * 100
-    print("\n--- Résultats ---")
-    print("Bonnes réponses :", bonnesReponses, "/", input2)
-    print("Pourcentage de réussite :", pourcentage, "%")
+    for i in range(nbQuestions):
+        a = randint(1, 100)
+        b = randint(1, 100)
+        reponse = int(input(str(a) + " + " + str(b) + " = "))
+        
+        if reponse == a + b:
+            print("Correct !")
+            score += 1
+        else:
+            print("Faux, c'était", a + b)
+    
+    pourcentage = (score / nbQuestions) * 100
+    print("\nScore :", score, "/", nbQuestions, "(", pourcentage, "%)")
     
     if pourcentage >= 80:
-        print("Excellent ! Bravo !")
+        print("Excellent !")
     elif pourcentage >= 50:
-        print("Pas mal, tu peux faire mieux !")
+        print("Pas mal !")
     else:
-        print("Il faut réviser...")
+        print("À réviser...")
+    
+    return pourcentage
 
-quizzMagique()
+# Menu principal
+meilleurScore = 0
+
+while True:
+    score = quizzMagique()
+    
+    if score > meilleurScore:
+        meilleurScore = score
+        print("Nouveau record !")
+    
+    print("\n1. Rejouer")
+    print("2. Meilleur score")
+    print("3. Quitter")
+    choix = input("Choix : ")
+    
+    if choix == "1":
+        pass
+    elif choix == "2":
+        print("Meilleur score :", meilleurScore, "%")
+    elif choix == "3":
+        print("Au revoir !")
+        break
