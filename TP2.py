@@ -19,3 +19,63 @@ dictionnaire1 = {"nom": "DUrand", "age": 20, "ville": "Albi"}
 dictionnaire1["num"] = "06 51 89 67 16"
 del dictionnaire1["age"]
 print(dictionnaire1)
+
+#Début du TP
+for i in range(1, 11):
+    print(9, "*", i, "=", 9 * i)
+
+def tailleArbre(année):
+    return 30 + 14 * année
+
+print(tailleArbre(8))
+
+def pyramideBille(hauteur):
+    total = 0
+    for i in range(1, hauteur + 1):
+        total += i * i
+    return total
+
+print(pyramideBille(100))
+
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+    
+print(fibonacci(10))
+
+def nbOccurence(phrase, lettre):
+    total = 0
+    for i in range(len(phrase)):
+        if phrase[i] == lettre:
+            total += 1
+    return total
+
+print(nbOccurence("y que fe", "e"))
+
+def calcDiviseurs():
+    input1 = int(input("Entrez un nombre : "))
+    for i in range(1, input1 + 1):
+        if input1 % i == 0:
+            print(i)
+
+calcDiviseurs()
+
+from random import randint
+#Quizz magique
+def quizzMagique():
+    input2 = int(input("Entrez un nombre de questions a poser : "))
+    for i in range(1, input2 + 1):
+        random1 = randint(1, 100)
+        random2 = randint(1, 100)
+        print("Question", i, ":", random1, "+", random2, "=")
+        input3 = int(input("Entrez la réponse : "))
+        if input3 == random1 + random2:
+            print("coorect !")
+        else:
+            print("faux la bonne réponse est", random1 + random2)
+
+quizzMagique()
